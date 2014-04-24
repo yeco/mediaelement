@@ -15,8 +15,8 @@
 var mejs = mejs || {};
 
 // version number
-mejs.version = '2.14.2'; 
-
+mejs.version = '2.14.1'; 
+console.log('ME.js version', mejs.version);
 
 // player number (for missing, same id attr)
 mejs.meIndex = 0;
@@ -1927,4 +1927,3 @@ window.MediaElement = mejs.MediaElement;
     }
 
 }(mejs.i18n.locale.strings));
-

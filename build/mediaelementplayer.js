@@ -456,7 +456,7 @@ if (typeof jQuery != 'undefined') {
 			t.killControlsTimer('start');
 
 			t.controlsTimer = setTimeout(function() {
-				//
+				//console.log('timer fired');
 				t.hideControls();
 				t.killControlsTimer('hide');
 			}, timeout);
@@ -532,8 +532,8 @@ if (typeof jQuery != 'undefined') {
 						} catch (e) {
 							// TODO: report control error
 							//throw e;
-							
-							
+							console.log('error building ' + feature);
+							console.log(e);
 						}
 					}
 				}
@@ -571,7 +571,7 @@ if (typeof jQuery != 'undefined') {
 						// create callback here since it needs access to current
 						// MediaElement object
 						t.clickToPlayPauseCallback = function() {
-							//
+							//console.log('media clicked', t.media, t.media.paused);
 
 							if (t.options.clickToPlayPause) {
 								if (t.media.paused) {
@@ -769,7 +769,7 @@ if (typeof jQuery != 'undefined') {
 					nativeWidth = t.isVideo ? ((t.media.videoWidth && t.media.videoWidth > 0) ? t.media.videoWidth : t.options.defaultVideoWidth) : t.options.defaultAudioWidth,
 					nativeHeight = t.isVideo ? ((t.media.videoHeight && t.media.videoHeight > 0) ? t.media.videoHeight : t.options.defaultVideoHeight) : t.options.defaultAudioHeight,
 					parentWidth = t.container.parent().closest(':visible').width(),
-					newHeight = t.isVideo || !t.options.autosizeProgress ? parseInt(parentWidth * nativeHeight/nativeWidth, 10) : nativeHeight;
+					newHeight = t.isVideo || !t.options.autosizeProgress ? parseInt(parentWidth * nativeHeight/nativeWidth, 10) > t.container.parent().closest(':visible').height() ? t.container.parent().closest(':visible').height() : parseInt(parentWidth * nativeHeight/nativeWidth, 10) : nativeHeight;
 
 				// When we use percent, the newHeight can't be calculated so we get the container height
 				if(isNaN(newHeight)) {
@@ -1137,8 +1137,8 @@ if (typeof jQuery != 'undefined') {
 					} catch (e) {
 						// TODO: report control error
 						//throw e;
-						//
-						//
+						//console.log('error building ' + feature);
+						//console.log(e);
 					}
 				}
 			}
@@ -1900,7 +1900,7 @@ if (typeof jQuery != 'undefined') {
 							return !!supports;
 						})();
 
-					//
+					//console.log('supportsPointerEvents', supportsPointerEvents);
 
 					if (supportsPointerEvents && !mejs.MediaFeatures.isOpera) { // opera doesn't allow this :(
 
@@ -2666,7 +2666,7 @@ if (typeof jQuery != 'undefined') {
 			
 				if (!img.is(':visible') && !img.is(':animated')) {
 				
-					//			
+					//console.log('showing existing slide');			
 					
 					img.fadeIn()
 						.siblings(':visible')
@@ -3053,7 +3053,7 @@ $.extend(mejs.MepDefaults,
 			});	
 			player.contextMenu.bind('mouseleave', function() {
 
-				//
+				//console.log('context hover out');
 				player.startContextMenuTimer();
 				
 			});		
@@ -3073,7 +3073,7 @@ $.extend(mejs.MepDefaults,
 		
 		contextMenuTimeout: null,
 		startContextMenuTimer: function() {
-			//
+			//console.log('startContextMenuTimer');
 			
 			var t = this;
 			
@@ -3087,7 +3087,7 @@ $.extend(mejs.MepDefaults,
 		killContextMenuTimer: function() {
 			var timer = this.contextMenuTimer;
 			
-			//
+			//console.log('killContextMenuTimer', timer);
 			
 			if (timer != null) {				
 				clearTimeout(timer);

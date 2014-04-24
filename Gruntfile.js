@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                     'src/js/me-i18n-locale-de.js',
                     'src/js/me-i18n-locale-zh.js'
                 ],
-                dest: 'local-build/mediaelement.js'
+                dest: 'build/mediaelement.js'
             },
             mep: {
                 src: [
@@ -38,51 +38,51 @@ module.exports = function(grunt) {
                     'src/js/mep-feature-contextmenu.js',
                     'src/js/mep-feature-postroll.js'
                 ],
-                dest: 'local-build/mediaelementplayer.js'
+                dest: 'build/mediaelementplayer.js'
             },
             bundle: {
                 src: [
-                    'local-build/mediaelement.js',
-                    'local-build/mediaelementplayer.js'
+                    'build/mediaelement.js',
+                    'build/mediaelementplayer.js'
                 ],
-                dest: 'local-build/mediaelement-and-player.js'
+                dest: 'build/mediaelement-and-player.js'
             }
         },
         uglify: {
             me: {
-                src    : ['local-build/mediaelement.js'],
-                dest   : 'local-build/mediaelement.min.js',
-                banner : 'src/js/me-header.js'
+                src: ['build/mediaelement.js'],
+                dest: 'build/mediaelement.min.js',
+                banner: 'src/js/me-header.js'
             },
             mep: {
-                src    : ['local-build/mediaelementplayer.js'],
-                dest   : 'local-build/mediaelementplayer.min.js',
-                banner : 'src/js/mep-header.js'
+                src: ['build/mediaelementplayer.js'],
+                dest: 'build/mediaelementplayer.min.js',
+                banner: 'src/js/mep-header.js'
             },
             bundle: {
-                src  : ['local-build/mediaelement-and-player.js'],
-                dest : 'local-build/mediaelement-and-player.min.js'
+                src: ['build/mediaelement-and-player.js'],
+                dest: 'build/mediaelement-and-player.min.js'
             }
         },
         cssmin: {
             build: {
-                src  : ['src/css/mediaelementplayer.css'],
-                dest : 'local-build/mediaelementplayer.min.css'
+                src: ['src/css/mediaelementplayer.css'],
+                dest: 'build/mediaelementplayer.min.css'
             }
         },
         copy: {
             build: {
-                expand  : true,
-                cwd     : 'src/css/',
-                src     : ['*.png', '*.svg', '*.gif', '*.css'],
-                dest    : 'local-build/',
-                flatten : true,
-                filter  : 'isFile'
+                expand: true,
+                cwd: 'src/css/',
+                src: ['*.png', '*.svg', '*.gif', '*.css'],
+                dest: 'build/',
+                flatten: true,
+                filter: 'isFile'
             }
         }
     });
 
-    
+
     grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy']);
 
 };
